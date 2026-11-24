@@ -266,11 +266,11 @@ fun AddRecipeScreen(onNavigate: (String ) -> Unit, recLib: RecipeLibrary, recRep
                             ingredientUnit.value = null
                         }
                     },
-                    modifier = Modifier.size(20.dp), contentPadding = PaddingValues(1.dp),
+                    modifier = Modifier.size(48.dp), contentPadding = PaddingValues(1.dp),
                     shape = CircleShape
                 ) {
                     Icon(
-                        modifier = Modifier.size(12.dp),
+                        modifier = Modifier.size(24.dp),
                         imageVector = Icons.Filled.Add,
                         contentDescription = "Add Ingredient"
                     )
@@ -295,12 +295,12 @@ fun AddRecipeScreen(onNavigate: (String ) -> Unit, recLib: RecipeLibrary, recRep
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(
                             onClick = { ingredientList.remove(ingredient) },
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(48.dp),
                             contentPadding = PaddingValues(0.dp),
                             shape = CircleShape
                         ) {
                             Icon(
-                                modifier = Modifier.size(12.dp),
+                                modifier = Modifier.size(24.dp),
                                 imageVector = Icons.Filled.Close,
                                 contentDescription = "Delete Ingredient"
                             )
@@ -310,9 +310,9 @@ fun AddRecipeScreen(onNavigate: (String ) -> Unit, recLib: RecipeLibrary, recRep
                             ingredientName.value = ingredient.name
                             ingredientUnit.value = ingredient.unit
                             ingredientQuantity.value = ingredient.quantity.toString()
-                        }, modifier = Modifier.size(20.dp), contentPadding = PaddingValues(1.dp), shape = CircleShape) {
+                        }, modifier = Modifier.size(48.dp), contentPadding = PaddingValues(1.dp), shape = CircleShape) {
                             Icon(
-                                modifier = Modifier.size(12.dp),
+                                modifier = Modifier.size(24.dp),
                                 imageVector = Icons.Filled.Edit,
                                 contentDescription = "Edit Ingredient"
                             )
@@ -338,10 +338,10 @@ fun AddRecipeScreen(onNavigate: (String ) -> Unit, recLib: RecipeLibrary, recRep
                             editedInstruction.value = null
                             instruction.value = ""
                         }
-                    }, modifier = Modifier.size(20.dp), contentPadding = PaddingValues(0.dp), shape = CircleShape
+                    }, modifier = Modifier.size(48.dp), contentPadding = PaddingValues(0.dp), shape = CircleShape
                 ) {
                     Icon(
-                        modifier = Modifier.size(12.dp),
+                        modifier = Modifier.size(24.dp),
                         imageVector = Icons.Filled.Add,
                         contentDescription = "Add Instruction"
                     )
@@ -365,7 +365,7 @@ fun AddRecipeScreen(onNavigate: (String ) -> Unit, recLib: RecipeLibrary, recRep
                                 }
                                 instructionList.remove(instructionStep)
                             },
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(48.dp),
                             contentPadding = PaddingValues(1.dp),
                             shape = CircleShape
                         )
@@ -373,7 +373,7 @@ fun AddRecipeScreen(onNavigate: (String ) -> Unit, recLib: RecipeLibrary, recRep
 
                         {
                             Icon(
-                                modifier = Modifier.size(12.dp),
+                                modifier = Modifier.size(24.dp),
                                 imageVector = Icons.Filled.Close,
                                 contentDescription = "Delete Instruction"
                             )
@@ -384,13 +384,13 @@ fun AddRecipeScreen(onNavigate: (String ) -> Unit, recLib: RecipeLibrary, recRep
                                 editedInstruction.value = index
                                 instruction.value = instructionStep.step
                             },
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(48.dp),
                             contentPadding = PaddingValues(1.dp),
                             shape = CircleShape
                         )
                         {
                             Icon(
-                                modifier = Modifier.size(12.dp),
+                                modifier = Modifier.size(24.dp),
                                 imageVector = Icons.Filled.Edit,
                                 contentDescription = "Edit Instruction"
                             )

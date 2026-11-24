@@ -85,37 +85,11 @@ fun RecipeListScreen(onNavigate: (String) -> Unit, recLib: RecipeLibrary, recRep
                 if (recipeValue != null && recipe.id == recipeValue.id) {
                     Card(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            RecipeDetails(recipeValue)
-                            Row(modifier = Modifier.fillMaxWidth(), Arrangement.spacedBy(8.dp, Alignment.End)) {
-                                Button(
-                                    onClick = {
+                            RecipeDetails(recipeValue, onEditRecipe, onDeleteRecipe =
+                                {recLib.removeRecipe(it.id)
+                                recRepo.saveLibrary()
+                                selectedRecipe.value = null})
 
-                                        recLib.removeRecipe(recipeValue.id)
-                                        recRepo.saveLibrary()
-                                        selectedRecipe.value = null
-                                    }, modifier = Modifier.size(20.dp), contentPadding = PaddingValues(1.dp),
-                                    shape = CircleShape
-                                ) {
-                                    Icon(
-                                        modifier = Modifier.size(12.dp),
-                                        imageVector = Icons.Filled.Close,
-                                        contentDescription = "Delete Recipe"
-                                    )
-                                }
-
-                                Button(
-                                    onClick = { onEditRecipe(recipeValue) },
-                                    modifier = Modifier.size(20.dp),
-                                    contentPadding = PaddingValues(1.dp),
-                                    shape = CircleShape
-                                ) {
-                                    Icon(
-                                        modifier = Modifier.size(12.dp),
-                                        imageVector = Icons.Filled.Edit,
-                                        contentDescription = "Edit Recipe"
-                                    )
-                                }
-                            }
                         }
                     }
                 }

@@ -33,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.example.recipeorganizer.data.RecipeLibrary
+import com.example.recipeorganizer.data.RecipeRepository
 import com.example.recipeorganizer.model.Recipe
 import com.example.recipeorganizer.model.Tag
 import com.example.recipeorganizer.model.tagList
@@ -40,7 +41,7 @@ import com.example.recipeorganizer.model.tagList
 //searchScreen handles all searches in the library by title, ingredient, or tag, and return a clickable list to the user.
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun SearchScreen(onNavigate: (String) -> Unit, recLib: RecipeLibrary) {
+fun SearchScreen(onNavigate: (String) -> Unit, recLib: RecipeLibrary, recRepo: RecipeRepository, onEditRecipe: (Recipe) -> Unit) {
     val searchType = remember{ mutableStateOf("Title") }
     val searchDropdownExpanded = remember{mutableStateOf(false)}
     val searchQuery = remember{mutableStateOf("")}
@@ -126,7 +127,12 @@ fun SearchScreen(onNavigate: (String) -> Unit, recLib: RecipeLibrary) {
                     println("Displaying recipe details")
                     Card{
                         Column(Modifier.padding(16.dp)) {
-                            RecipeDetails(clickedRecipe)
+                            RecipeDetails(clickedRecipe, onEditRecipe, onDeleteRecipe =
+                                {recLib.removeRecipe(it.id)
+                                    recRepo.saveLibrary()
+                                    searchResults.remove(it)
+                                    selectedRecipe.value = null}
+                                    )
                         }
                     }
                 }
